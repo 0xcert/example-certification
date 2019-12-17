@@ -5,8 +5,10 @@ import {
   metadataImprint,
   metadataNotarize,
   metadataExpose,
-  metadataDisclose
+  metadataDisclose,
+  verify
 } from "./src/example";
+import { config } from "./src/config";
 
 const divConsole = document.getElementById("console");
 const btnShowSchema = document.getElementById("btnShowSchema");
@@ -16,6 +18,7 @@ const btnAssetImprint = document.getElementById("btnAssetImprint");
 const btnNotarizeMetadata = document.getElementById("btnNotarizeMetadata");
 const btnGenerateMetadata = document.getElementById("btnGenerateMetadata");
 const btnGenerateEvidence = document.getElementById("btnGenerateEvidence");
+const btnVerify = document.getElementById("btnVerify");
 
 btnShowSchema.addEventListener("click", async () => {
   printMessage(JSON.stringify(getSchema(), null, 2));
@@ -69,6 +72,30 @@ btnGenerateEvidence.addEventListener("click", async () => {
     printMessage(
       "Selective exposed evidence: " + JSON.stringify(evidence, null, 2)
     );
+  }
+});
+
+btnVerify.addEventListener("click", async () => {
+  if (!config.imprint) {
+    printWarning("First calculate imprint.");
+    return;
+  }
+
+  if (!config.exposedMetadata) {
+    printWarning("First generate selective metadata.");
+    return;
+  }
+
+  if (!config.exposedEvidence) {
+    printWarning("First generate selective evidence.");
+    return;
+  }
+
+  const verified = await verify().catch(e => {
+    printError(e);
+  });
+  if (typeof verified !== "undefined") {
+    printMessage("Verify result: " + JSON.stringify(verified));
   }
 });
 

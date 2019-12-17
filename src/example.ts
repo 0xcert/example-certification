@@ -22,13 +22,27 @@ export async function metadataNotarize() {
 }
 
 export async function metadataImprint() {
-  return cert.imprint(config.metadata);
+  config.imprint = await cert.imprint(config.metadata);
+  return config.imprint;
 }
 
 export async function metadataExpose() {
-  return cert.expose(config.metadata, [["name"]]);
+  config.exposedMetadata = cert.expose(config.metadata, [["name"]]);
+  return config.exposedMetadata;
 }
 
 export async function metadataDisclose() {
-  return cert.disclose(config.metadata, [["name"]]);
+  config.exposedEvidence = await cert.disclose(config.metadata, [["name"]]);
+  return config.exposedEvidence;
+}
+
+export async function verify() {
+  const calculatedImprint = await cert.calculate(
+    config.exposedMetadata,
+    config.exposedEvidence
+  );
+  if (!calculatedImprint) {
+    return false;
+  }
+  return config.imprint === calculatedImprint;
 }

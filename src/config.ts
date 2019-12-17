@@ -39,5 +39,8 @@ export const config = {
     description:
       "A weapon for the Troopers game which can severely injure the enemy.",
     image: "https://troopersgame.com/dog.jpg"
-  }
+  },
+  imprint: null,
+  exposedMetadata: null,
+  exposedEvidence: null
 };

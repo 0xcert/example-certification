@@ -1,17 +1,18 @@
-This is an example of how to use certification in 0xcert framework v2.
+This is an example of how to use certification within the 0xcert Framework v2.
 
-The example is wrapped in a simple UI to showcase the functionalitites. Certification principles showed here are needed for most other guides but are not exclusive for 0xcert framework but can be used in non blockchain related applications as well.
-Main logic is isolated in `src/example.ts` while response handling is located in `index.ts`. The basic configuration needed for communication can be found in `src/config.ts` file.
+The example is put in the context of a simple UI to showcase its functionalities. The certification principles demonstrated in this example are needed for most other guides, however, they are not exclusive to the 0xcert Framework and can be used in non-blockchain-related applications, as well.
 
-To keep the example as simple as possible there are some hardcoded values like the definition of schema and exmaple metadata we are using. You can change those in `src/config.ts`. There are also some other empty variables needed for the example logic.
+The main logic is isolated in the `src/example.ts` file while response handling is located in `index.ts`. The basic configuration needed for communication can be found in the `src/config.ts` file.
 
-Project stucture:
+To keep the example as simple as possible, some values are hardcoded, such as the definition of schema and the example metadata being used. You can change those in the `src/config.ts` file. The example logic also requires some other empty variables.
+
+Project structure:
 
 | Path           | Description                                   |
 | -------------- | --------------------------------------------- |
 | src/example.ts | Main logic showing the use.                   |
 | src/config.ts  | Configuration file.                           |
-| index.html     | Front end styling.                            |
-| index.ts       | Controller connecting front end to the logic. |
+| index.html     | Front-end styling.                            |
+| index.ts       | Controller connecting front-end to the logic. |
 | package.json   | Dependencies.                                 |
-| style.css      | Front end styling.                            |
+| style.css      | Front-end styling.                            |

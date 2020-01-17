@@ -8,7 +8,7 @@
     "build": "parcel build index.html"
   },
   "dependencies": {
-    "@0xcert/cert": "2.0.0-alpha14"
+    "@0xcert/cert": "2.0.0-beta"
   },
   "devDependencies": {
     "parcel-bundler": "^1.6.1"
